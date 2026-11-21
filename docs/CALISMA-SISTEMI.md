@@ -85,6 +85,11 @@ Varsayılan çoğu iş için yeterli. Zor ve sinsi işlerde (ör. Ritmi Tut zama
 bilmediğimiz bir çökme) oturumu yüksek eforla aç. Basit metin ve renk düzeltmelerinde gerek yok.
 "İyice düşün" gibi ifadeler işe yaramıyor; efor ayarı yarıyor.
 
+## Dil
+
+Claude seninle her zaman Türkçe konuşur. Kendi alt ajanlarına (ör. `inceleyici`) iş verirken ve onlardan rapor alırken
+İngilizce kullanır; sonucu sana Türkçe aktarır.
+
 ## Claude'un sana sormadan yapmadıkları
 
 - Veri gönderen, hesap ya da reklam ekleyen her şey (gizlilik beyanı değişir).

@@ -9,6 +9,8 @@ Claude Code'un bu repoda nasıl çalışacağı. Kodun yapısı `README.md`'de, 
   devralacak.
 - **Her zaman Türkçe yanıt ver.** Teknik terimleri gerektiği kadar kullan, ne değiştiğini ekranda göreceği haliyle anlat
   ("Pratik sayfasındaki Bugün kartı…"), dosya ve fonksiyon adlarını yalnızca gerekirse an.
+- **Ajanlarla İngilizce:** alt ajanlara (subagent, `inceleyici` dahil) verdiğin görevleri İngilizce yaz; raporlarını da
+  İngilizce iste. Ceren'e aktarırken Türkçeye çevir. Ceren'le her zaman Türkçe.
 - Ceren'in bilgisayarında git, IDE ve Mac yok; bulut oturumlarından ve telefondan çalışıyor. Commit ve push'u sen
   yaparsın; o sonucu GitHub'da ve önizlemede görür. iOS derlemesi bulut serviste alınır: Xcode'da elle yapılacak bir
   ayar gerekiyorsa onu proje dosyasından yap ya da nasıl yapılacağını göster.
