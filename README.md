@@ -4,6 +4,8 @@ Piyano öğrencileri için nota okuma, ritim, akor ve müzik terimleri pratiği.
 iOS ve Android'de çalışan tek bir web uygulaması: **React 19 + TypeScript + Vite**, yerel kabuk **Capacitor 7**.
 Sunucu yok; tüm ilerleme telefonda saklanır.
 
+Ürün kararları ve yol haritası: `docs/URUN.md`. Claude Code ile çalışma kuralları: `CLAUDE.md`.
+
 ## Ritmi Tut (ritim oyunu)
 
 - Ekran: `screens/RhythmTapSession.tsx`; ritimler ve puanlama: `data/rhythmTap.ts`. Giriş: ana sayfada Ritim & Ölçü kartının
