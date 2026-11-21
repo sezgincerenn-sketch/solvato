@@ -1,5 +1,9 @@
 # Solvato
 
+> **Bu repo artık kullanılmıyor (21 Kasım 2026).** Geliştirme tüm geçmişiyle taşındı:
+> iOS → `solvato-ios`, Android (dondurulmuş) → `solvato-android`, analitik ve admin paneli → `solvato-admin`.
+
+
 Piyano öğrencileri için nota okuma, ritim, akor ve müzik terimleri pratiği.
 iOS ve Android'de çalışan tek bir web uygulaması: **React 19 + TypeScript + Vite**, yerel kabuk **Capacitor 7**.
 Sunucu yok; tüm ilerleme telefonda saklanır.
