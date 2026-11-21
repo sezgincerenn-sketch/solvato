@@ -12,3 +12,6 @@ logs/
 .claude-replay.*
 .tmp-*
 dist-single/
+
+# ekran görüntüleri (scripts/ekran.mjs)
+ekran/
