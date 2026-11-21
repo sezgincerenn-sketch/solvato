@@ -150,6 +150,8 @@ export default function SettingsScreen({
   onReset,
   onShowTutorial,
   onOpenTeacher,
+  onOpenPrivacy,
+  onOpenLicenses,
 }: {
   themeMode: ThemeMode
   onThemeMode: (m: ThemeMode) => void
@@ -157,6 +159,8 @@ export default function SettingsScreen({
   onReset: () => void
   onShowTutorial: () => void
   onOpenTeacher: () => void
+  onOpenPrivacy: () => void
+  onOpenLicenses: () => void
 }) {
   const s = useSettings()
   const [reminderMsg, setReminderMsg] = useState("")
@@ -405,6 +409,10 @@ export default function SettingsScreen({
             </div>
           )}
         </div>
+
+        <Section>Hakkında</Section>
+        <LinkRow title="Gizlilik" sub="Veri toplanmaz, her şey bu cihazda" onClick={onOpenPrivacy} />
+        <LinkRow title="Lisanslar" sub="Kullanılan yazı tipleri ve açık kaynak yazılımlar" onClick={onOpenLicenses} />
 
         <p style={{ fontSize: font.size.sm, color: colors.textSubtle, textAlign: "center", marginTop: 28 }}>
           Sürüm 1.0

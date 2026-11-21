@@ -130,6 +130,8 @@ export type View =
   | "profile"
   | "lesson"
   | "teacher"
+  | "privacy"
+  | "licenses"
 export type Theme = "dark" | "light"
 
 // Bir sorunun cevap durumu

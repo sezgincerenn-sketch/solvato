@@ -80,6 +80,7 @@ src/
     study/              Çalışma sekmesi (Notalar, Ritim, Akorlar, Terimler)
     GamesScreen         Oyunlar; GameResultScreen; ChordDuel
     SettingsScreen, Onboarding, Splash
+    LegalScreen         Ayarlar › Gizlilik ve Lisanslar (metinler data/legal.ts)
 
   data/                 soru bankası (questions.ts), akorlar (chords.ts), tur seçimi (session.ts),
                         Bravura sembol yolları (smufl.ts — otomatik üretildi, elle düzenlemeyin)
@@ -142,10 +143,14 @@ Yeni bir renk gerekiyorsa önce `palette`'e, temaya göre değişmesi gerekiyors
 - **Kulak**: soru bankası yok, her tur `data/ear.ts` üretir (önce Do + soru notası; akor türü). Her soruda 4 şık; akorda
   Majör/Minör/Eksik/Artık (Başlangıçta yalnız majör/minör çalınır, şıklar yine 4). Sesi
   `components/EarPrompt.tsx` çalar; ses kapalıysa soru dinlenemez, aynı yerde "Sesi aç" çıkar.
-- **Ünvanlar**: seviyeden ayrı, XP ile kazanılan 6 basamak (Yeni Başlayan → Usta), `utils/level.ts` `RANKS`.
+- **Ünvanlar**: seviyeden ayrı, XP ile kazanılan 15 basamak (Yeni Başlayan → Usta), `utils/level.ts` `RANKS`.
   Arayüzde "seviye" kelimesi yalnızca Başlangıç/Orta/İleri için kullanılır; XP basamakları her yerde "ünvan".
 - **Kaydırarak geri (`utils/swipeBack.tsx`)**: ekranın sol kenarından kaydırınca önceki ekran altta görünür.
   Ekranların geri düğmesi `data-back` ile işaretlenir; Android geri tuşu da onu kullanır.
+- **Gizlilik ve Lisanslar (`screens/LegalScreen.tsx`, `data/legal.ts`)**: Ayarlar › Hakkında. Gizlilik metni mağazadaki
+  gizlilik politikasıyla aynı içerikte tutulur (App Store 5.1.1 politikayı uygulama içinde de ister); politika değişirse
+  ikisi birlikte güncellenir. Font lisansları (SIL OFL) paketlerin kendi `LICENSE` dosyalarından `?raw` ile alınır;
+  yeni bir yazı tipi ya da kütüphane eklenirse `LICENSES` listesine de eklenmeli.
 - **Oyunlar (`utils/games.ts`)**: sunucusuz. Aynı tohum (seed) iki telefonda aynı soruları üretir;
   meydan okuma kodu 40 bitlik bir sayıdır (kategori, seviye, tohum, doğru, süre, kontrol).
 - **Depolama**: `localStorage` + `utils/persist.ts` ile telefonun kalıcı depolaması (Capacitor Preferences).

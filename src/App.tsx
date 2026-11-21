@@ -22,6 +22,7 @@ import LessonScreen from "./screens/study/LessonScreen"
 import { playSessionDone } from "./utils/audio"
 import Celebration, { type CelebrationData } from "./components/Celebration"
 import SettingsScreen from "./screens/SettingsScreen"
+import LegalScreen from "./screens/LegalScreen"
 import Onboarding from "./screens/Onboarding"
 import Splash from "./screens/Splash"
 import { getSettings, updateSettings, subscribeSettings } from "./utils/settings"
@@ -351,6 +352,8 @@ export default function App() {
           "profile",
           "lesson",
           "teacher",
+          "privacy",
+          "licenses",
         ].includes(view)
       )
         return backTarget()
@@ -399,6 +402,11 @@ export default function App() {
           </TabletColumn>
         )}
 
+        {(v === "privacy" || v === "licenses") && (
+          <TabletColumn width={680}>
+            <LegalScreen page={v} onBack={goBack} />
+          </TabletColumn>
+        )}
         {v === "settings" && (
           <TabletColumn width={680}>
             <SettingsScreen
@@ -406,6 +414,8 @@ export default function App() {
               onThemeMode={setThemeMode}
               onBack={goBack}
               onOpenTeacher={() => setView("teacher")}
+              onOpenPrivacy={() => setView("privacy")}
+              onOpenLicenses={() => setView("licenses")}
               onShowTutorial={() => {
                 updateSettings({ coachDone: false })
                 setView("home")
