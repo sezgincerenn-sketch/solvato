@@ -190,15 +190,22 @@ export function fmtSec(sec: number) {
 }
 
 // ─── Paylaş ──────────────────────────────────────────────────────────────────
-export async function shareText(text: string): Promise<"shared" | "copied" | "failed"> {
-  try {
-    if (Capacitor.isNativePlatform()) {
+export async function shareText(text: string): Promise<"shared" | "copied" | "cancelled" | "failed"> {
+  if (Capacitor.isNativePlatform()) {
+    try {
       const { Share } = await import("@capacitor/share")
       await Share.share({ text })
       return "shared"
+    } catch (e) {
+      // Kullanıcı menüyü kapattıysa sessizce dön (eskiden ardından ikinci bir paylaşım menüsü açılıyordu)
+      if (/cancel/i.test(String((e as Error)?.message ?? e))) return "cancelled"
+      try {
+        await navigator.clipboard.writeText(text)
+        return "copied"
+      } catch {
+        return "failed"
+      }
     }
-  } catch {
-    /* web'e düş */
   }
   try {
     if (navigator.share) {
@@ -206,7 +213,7 @@ export async function shareText(text: string): Promise<"shared" | "copied" | "fa
       return "shared"
     }
   } catch (e) {
-    if ((e as Error)?.name === "AbortError") return "failed"
+    if ((e as Error)?.name === "AbortError") return "cancelled"
   }
   try {
     await navigator.clipboard.writeText(text)
