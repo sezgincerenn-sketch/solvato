@@ -1,6 +1,6 @@
 # Plan: iOS yayını, repo ayrımı, test ortamı, analitik ve admin paneli
 
-Tarih: 21 Kasım 2026. Durum: **taslak, Ceren'in kararlarını bekliyor** (en altta).
+Tarih: 21 Kasım 2026. Durum: **onaylandı** (kararlar en altta).
 Hedef yayın (URUN.md): 23 Aralık – 5 Ocak.
 
 ## Önce bilinmesi gereken üç şey
@@ -134,11 +134,18 @@ Yayın tarihine dair uyarı: analitik 1.0'a girerse gizlilik beyanları ve incel
 Önerim 1.0'ı bugünkü gibi veri toplamadan çıkarmak, analitiği 1.1'de eklemek. Yine de 1.0'dan itibaren veri
 istiyorsan Paket 4'ü öne alırız.
 
-## Kararını bekleyenler
+## Kararlar (21 Kasım)
 
-1. Repo yapısı (Paket 1)
-2. Web önizlemesi ne zaman silinsin
-3. Veri modeli: anonim analitik mi, hesaplı mı (Paket 4)
-4. Analitik 1.0'da mı 1.1'de mi
-5. Apple Developer hesabı: var mı, bireysel mi şirket mi
-6. Sessiz modda ses (önceki kontrolden)
+| Konu                 | Karar                                                                                     |
+| -------------------- | ----------------------------------------------------------------------------------------- |
+| Veri modeli          | **Anonim analitik**: isim ve hesap yok, rastgele cihaz kimliği, Ayarlar'dan kapatılabilir |
+| Analitik zamanlaması | **1.1**: 1.0 veri toplamadan çıkar                                                        |
+| Web önizlemesi       | **TestFlight çalışınca** silinir                                                          |
+| Apple Developer      | **Hesap var**                                                                             |
+| Cihazlar             | iPhone + iPad                                                                             |
+
+## Hâlâ açık
+
+1. Repo yapısı: önerilen yapı (bu repo iOS, `solvato-android` dondurulmuş kopya, `solvato-admin`) itiraz gelmezse uygulanır.
+   GitHub'da iki boş reponun Ceren tarafından açılması gerekiyor.
+2. Sessiz modda ses (önerim: evet, arkada çalan müzik durmadan).
