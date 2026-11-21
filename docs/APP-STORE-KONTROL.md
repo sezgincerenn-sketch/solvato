@@ -19,30 +19,30 @@ Tarih: 21 Kasım 2026 · Sürüm 1.0 (build 1) · Capacitor 7.6 · iOS hedefi 14
 
 ## Özet tablo
 
-| #   | Konu                                        | Durum                                        |
-| --- | ------------------------------------------- | -------------------------------------------- |
-| 0   | Xcode 26 / iOS 26 SDK, en düşük iOS         | Engel: bulut derlemede ayarlanmalı (aşağıda) |
-| 1   | 4.2 Minimum işlevsellik                     | Tamam (düşük risk)                           |
-| 2a  | PrivacyInfo.xcprivacy                       | Engel → **düzeltildi**                       |
-| 2b  | Required reason API beyanları               | Engel → **düzeltildi**                       |
-| 2c  | "Data Not Collected" ile kod uyumu          | Tamam                                        |
-| 2d  | Gizlilik politikası uygulama içinde         | Engel → **düzeltildi**                       |
+| #   | Konu                                         | Durum                                        |
+| --- | -------------------------------------------- | -------------------------------------------- |
+| 0   | Xcode 26 / iOS 26 SDK, en düşük iOS          | Engel: bulut derlemede ayarlanmalı (aşağıda) |
+| 1   | 4.2 Minimum işlevsellik                      | Tamam (düşük risk)                           |
+| 2a  | PrivacyInfo.xcprivacy                        | Engel → **düzeltildi**                       |
+| 2b  | Required reason API beyanları                | Engel → **düzeltildi**                       |
+| 2c  | "Data Not Collected" ile kod uyumu           | Tamam                                        |
+| 2d  | Gizlilik politikası uygulama içinde          | Engel → **düzeltildi**                       |
 | 2e  | Gizlilik politikası herkese açık bir adreste | Engel: Ceren                                 |
-| 3a  | İzin metinleri                              | Tamam                                        |
-| 3b  | ITSAppUsesNonExemptEncryption               | Risk → **düzeltildi**                        |
-| 3c  | Geliştirme dili tr                          | Risk → **düzeltildi**                        |
-| 3d  | Ekran yönleri                               | Tamam                                        |
-| 3e  | iPad desteği ve iPad ekran görüntüleri      | Engel: karar gerekiyor                       |
-| 4   | İkon ve açılış ekranı                       | Tamam                                        |
-| 5a  | Çalışmayan düğme, "yakında", test verisi    | Tamam                                        |
-| 5b  | Paylaşım menüsü iptal edilince ikinci menü  | Risk → **düzeltildi**                        |
-| 5c  | Sessiz modda ses (Kulak, Ritmi Tut)         | Risk: karar gerekiyor                        |
-| 5d  | Reklam kodu                                 | Tamam                                        |
-| 6   | 2.3 Mağaza metinleri                        | Risk: köşeli parantezler temizlenmeli        |
-| 7   | Yaş derecesi 4+, Kids yok                   | Tamam                                        |
-| 8   | Lisanslar                                   | Risk → **düzeltildi**                        |
-| 9   | Erişilebilirlik ve temel kalite             | Tamam (iyileştirme önerileri var)            |
-| 10  | App Store Connect'te doldurulacaklar        | Ceren (liste en sonda)                       |
+| 3a  | İzin metinleri                               | Tamam                                        |
+| 3b  | ITSAppUsesNonExemptEncryption                | Risk → **düzeltildi**                        |
+| 3c  | Geliştirme dili tr                           | Risk → **düzeltildi**                        |
+| 3d  | Ekran yönleri                                | Tamam                                        |
+| 3e  | iPad desteği ve iPad ekran görüntüleri       | Engel: karar gerekiyor                       |
+| 4   | İkon ve açılış ekranı                        | Tamam                                        |
+| 5a  | Çalışmayan düğme, "yakında", test verisi     | Tamam                                        |
+| 5b  | Paylaşım menüsü iptal edilince ikinci menü   | Risk → **düzeltildi**                        |
+| 5c  | Sessiz modda ses (Kulak, Ritmi Tut)          | Risk: karar gerekiyor                        |
+| 5d  | Reklam kodu                                  | Tamam                                        |
+| 6   | 2.3 Mağaza metinleri                         | Risk: köşeli parantezler temizlenmeli        |
+| 7   | Yaş derecesi 4+, Kids yok                    | Tamam                                        |
+| 8   | Lisanslar                                    | Risk → **düzeltildi**                        |
+| 9   | Erişilebilirlik ve temel kalite              | Tamam (iyileştirme önerileri var)            |
+| 10  | App Store Connect'te doldurulacaklar         | Ceren (liste en sonda)                       |
 
 ---
 
@@ -77,6 +77,7 @@ Tarih: 21 Kasım 2026 · Sürüm 1.0 (build 1) · Capacitor 7.6 · iOS hedefi 14
 
   Capawesome Cloud ve Capgo'da da derleme ayarlarında "Xcode version" / "stack" alanından 26 seçilir.
   İmzalama (`DEVELOPMENT_TEAM`, sertifika, profil) projede bilerek boş; servis kendi ekler.
+
 - **Gelecek:** Apple, iOS 27 SDK ile (2027 baharı) UIKit uygulamalarından "UIScene" yaşam döngüsü isteyecek.
   `ios/App/App/AppDelegate.swift` eski düzende. Bu yayın için sorun değil; 2027'de Capacitor 8'e geçerken çözülür.
 

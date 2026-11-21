@@ -1,7 +1,7 @@
 # CLAUDE.md
 
-Bu dosya Claude Code'un bu repoda nasıl çalışacağını anlatır. Kodun yapısı ve kavramları için `README.md`,
-ürün kararları ve yol haritası için `docs/URUN.md`.
+Claude Code'un bu repoda nasıl çalışacağı. Kodun yapısı `README.md`'de, ürün kararları ve yol haritası `docs/URUN.md`'de,
+çalışma sisteminin Ceren'e anlatılmış hali `docs/CALISMA-SISTEMI.md`'de.
 
 ## Kiminle çalışıyorsun
 
@@ -9,59 +9,63 @@ Bu dosya Claude Code'un bu repoda nasıl çalışacağını anlatır. Kodun yap�
   devralacak.
 - **Her zaman Türkçe yanıt ver.** Teknik terimleri gerektiği kadar kullan, ne değiştiğini ekranda göreceği haliyle anlat
   ("Pratik sayfasındaki Bugün kartı…"), dosya ve fonksiyon adlarını yalnızca gerekirse an.
-- Değişiklik bitince kısa bir özet yaz: ne değişti, kullanıcı ne görecek, varsa kararı gereken bir şey.
-- Ceren'in bilgisayarında git ya da IDE yok. Commit ve push'u sen yaparsın; o sonucu GitHub'da ve önizlemede görür.
+- Ceren'in bilgisayarında git, IDE ve Mac yok; bulut oturumlarından ve telefondan çalışıyor. Commit ve push'u sen
+  yaparsın; o sonucu GitHub'da ve önizlemede görür. iOS derlemesi bulut serviste alınır: Xcode'da elle yapılacak bir
+  ayar gerekiyorsa onu proje dosyasından yap ya da nasıl yapılacağını göster.
+
+## Çalışma şekli
+
 - Küçük, net istekleri doğrudan yap. Geri dönmesi zor ya da birden çok yoruma açık işlerde önce tek soru sor.
+- Birden çok ekranı etkileyen ya da ürün kararı içeren isteklerde koda geçmeden **`ozellik`** becerisiyle özellik
+  dokümanı yaz (`docs/ozellikler/`). Uygulama ayrı oturumda o dokümandan yapılır.
+- Kod değiştiren her işi **`bitir`** becerisiyle bitir (kontrol, ekran, README, sync, önizleme, commit, push, özet).
+- Bir özellik bitince main'e göndermeden önce **`inceleyici`** ajanına dokümana göre inceletebilirsin; yalnız doğruluk
+  bulgularını düzelt.
+- Kanıtla konuş: "geçti" deme, komutu ve sonucunu ya da ekran görüntüsünü göster.
 
 ## Komutlar
 
 ```bash
-npm install
-npm run dev            # geliştirme sunucusu
-npm run check          # tür kontrolü (noUnused açık) + Prettier kontrolü — her değişiklikten sonra çalıştır
+npm run check          # tür kontrolü (noUnused açık) + Prettier kontrolü
 npm run format         # biçim hatalarını düzeltir
-npm run build:single   # tek dosyalık önizleme: dist-single/index.html (Ceren'e gösterilecek sürüm)
+node scripts/ekran.mjs --ad x --adim Profil --se   # ekran görüntüsü (önce npm run build); `ekran` becerisine bak
+npm run build:single   # tek dosyalık önizleme: dist-single/index.html
 npm run sync           # derle + cap sync (android/ ve ios/ projelerini günceller)
 ```
 
-## Bir değişikliği bitirmeden önce
-
-1. `npm run check` temiz geçmeli.
-2. Arayüz değiştiyse ekranı **koyu ve açık temada** gerçekten aç ve bak (Playwright varsa ekran görüntüsü al,
-   390×844 telefon boyutu). Taşan yazı, iki satıra kırılan düğme, okunmayan renk en sık görülen hatalar.
-3. Mantık değiştiyse (puanlama, seviye, tarih, seri) küçük bir örnekle çalıştırıp sonucu doğrula.
-4. `README.md`'de ilgili bölümü güncelle; yeni bir kavram eklediysen "Önemli kavramlar"a bir madde yaz.
-5. `npm run sync` ile native projeleri eşitle (android/ ve ios/ repoda, eski kalmasınlar).
-6. Ceren'in denediği önizlemeyi güncelle: `npm run build:single`, sonra `dist-single/index.html`'i önizleme sayfasına
-   yayınla (bağlantı `docs/URUN.md`'de; Artifact aracın varsa aynı adrese yeniden yayınla).
-7. Commit mesajı Türkçe ve ne değiştiğini söyler ("Ritmi Tut: çıkışta onay sor"). Sonra `main`e push et.
-
-Ekran görüntüsü alırken uygulamayı hazır duruma getirmek için `localStorage` anahtarları:
-`pianote_settings_v1` (`{"onboarded":true,"coachDone":true,"level":2}`), `notalik_rotate_hint_v1` = `"99"`,
-`pianote_theme_v1` = `"dark"|"light"`. İstatistikler `notausta_stats_v1`; `lastPlayDate` `Date.toDateString()`
-biçiminde, günlük anahtarlar `YYYY-MM-DD`. Açılış animasyonu ~3 sn sürer, sonra ekran gelir.
+Kancalar (`.claude/settings.json`): oturum başında `node_modules` yoksa `npm install`; düzenlenen `src/` dosyası Prettier'dan
+geçer; `src/` değişmişken iş bitirilmek istenirse `npm run check` koşar ve geçmezse durdurur.
 
 ## Kod kuralları
 
 - **Ham renk ve sayı yok**: her şey `src/design/tokens.ts`. Yazı rengi `colors.*`, dolgu `palette.*` / `category.*`.
-  Açık tema yalnızca token kullanılırsa çalışır.
+  Açık tema yalnızca token kullanılırsa çalışır. (Eski dosyalarda 16 ham hex ve 57 `rgba(` kaldı: bilinen borç, yenisini ekleme.)
 - **Tekrar yok**: aynı parça iki yerde gerekiyorsa `src/ui/` (genel) ya da `src/components/` (müziğe özgü) altına
   çıkar. Örnekler: `ExitConfirm`, `PlayChip`, `TopicLink`, `GoalStaff`, `MusicalStaff`.
 - Yeni bileşenlerde Tailwind sınıfı değil satır içi stil + token kullan (tasarım sistemi önizlemesi Tailwind'i
   yüklemez). Eski dosyalarda kalan Tailwind sınıfları bilinen borç.
 - Dosyanın başına bir-iki satır Türkçe açıklama yaz: ne yapar, nerede kullanılır.
 - Depolama anahtarlarını **yeniden adlandırma** (eski adlar bilerek korunuyor). Yeni anahtar `solvato_` önekiyle.
-- Bravura sembolleri `src/data/smufl.ts`'de, otomatik üretildi; elle düzenleme.
 - Kullanıcıya görünen metin Türkçe. Yazım kuralları:
   - Yüzde önde: **%40** (40% değil). Süre: **0,4 sn** (`fmtSec`).
   - "Seviye" yalnızca Başlangıç / Orta / İleri için; XP basamakları "ünvan".
   - **"Öğretmen"** de, "hoca" deme.
   - Nota adları Do Re Mi Fa Sol La Si; oktavlı yazımda "Fa4".
 
+## Tuzaklar
+
+- `src/data/smufl.ts` otomatik üretildi; düzenleme izinlerle engelli.
+- `ios/App/App.xcodeproj/project.pbxproj` elle (betikle) düzenlenir; `cap sync` ona dokunmaz. Yeni dosya eklerken
+  PBXFileReference + PBXBuildFile + grup + Resources aşamasına dört kayıt gerekir (örnek: `PrivacyInfo.xcprivacy`).
+- Yeni native eklenti → `ios/App/App/PrivacyInfo.xcprivacy` beyanını kontrol et. Yeni bağımlılık ya da yazı tipi →
+  `src/data/legal.ts` `LICENSES`. Gizlilik politikası değişirse aynı dosyadaki `PRIVACY` metni de değişir.
+- `utils/persist.ts` yalnızca üç anahtarı UserDefaults'a yansıtıyor; yeni kalıcı veri eklersen listeye ekle.
+- Reklam kodu (`utils/ads.ts`) kapalı ve kapalı kalacak; açmak gizlilik beyanını değiştirir.
+- Uygulama hiçbir yere ağ isteği göndermez ("Data Not Collected"). Bir şey gönderen özellik eklenecekse önce Ceren'e sor.
+
 ## Ürün ilkeleri (kısa)
 
 - Uygulama **öğretmenle birlikte** kullanılan bir pratik aracı; dersin yerini almaz.
-- Sunucu yok, hesap yok, veri toplanmaz (mağaza gizlilik beyanları buna dayanıyor — bir şey gönderen özellik
-  eklenecekse önce Ceren'e sor, gizlilik politikası da değişir).
+- Sunucu yok, hesap yok, veri toplanmaz (mağaza gizlilik beyanları buna dayanıyor).
 - Yayında **reklam yok**. Önce büyüme, sonra Solvato Plus ve öğretmen paneli (`docs/URUN.md`).
 - Solfie (maskot) az görünür: tanıtım, tur sonucu, kutlama. Her ekrana ekleme.

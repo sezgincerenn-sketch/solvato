@@ -4,7 +4,8 @@ Piyano öğrencileri için nota okuma, ritim, akor ve müzik terimleri pratiği.
 iOS ve Android'de çalışan tek bir web uygulaması: **React 19 + TypeScript + Vite**, yerel kabuk **Capacitor 7**.
 Sunucu yok; tüm ilerleme telefonda saklanır.
 
-Ürün kararları ve yol haritası: `docs/URUN.md`. Claude Code ile çalışma kuralları: `CLAUDE.md`.
+Ürün kararları ve yol haritası: `docs/URUN.md`. Claude Code ile çalışma kuralları: `CLAUDE.md`,
+çalışma sistemi (beceriler, kancalar, iş akışı): `docs/CALISMA-SISTEMI.md`.
 
 ## Ritmi Tut (ritim oyunu)
 
@@ -46,13 +47,14 @@ npm run check        # tür kontrolü + biçim kontrolü (commit öncesi)
 npm run format       # Prettier ile biçimlendir
 ```
 
-| Komut                  | Ne yapar                                                         |
-| ---------------------- | ---------------------------------------------------------------- |
-| `npm run build`        | `dist/` içine üretim derlemesi                                   |
-| `npm run build:single` | Tek dosyalık önizleme (`dist-single/index.html`), paylaşmak için |
-| `npm run sync`         | Derle + `cap sync` (iOS/Android projelerini günceller)           |
-| `npm run ios`          | Derle, eşitle, Xcode'u aç (Mac gerekir)                          |
-| `npm run android`      | Derle, eşitle, Android Studio'yu aç                              |
+| Komut                    | Ne yapar                                                                   |
+| ------------------------ | -------------------------------------------------------------------------- |
+| `npm run build`          | `dist/` içine üretim derlemesi                                             |
+| `npm run build:single`   | Tek dosyalık önizleme (`dist-single/index.html`), paylaşmak için           |
+| `npm run sync`           | Derle + `cap sync` (iOS/Android projelerini günceller)                     |
+| `npm run ios`            | Derle, eşitle, Xcode'u aç (Mac gerekir)                                    |
+| `npm run android`        | Derle, eşitle, Android Studio'yu aç                                        |
+| `node scripts/ekran.mjs` | Ekran görüntüsü (koyu/açık, `--se`, `--tablet`), taşma ve dış istek raporu |
 
 ## Klasör yapısı
 
